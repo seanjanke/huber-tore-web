@@ -13,6 +13,7 @@ class EmployeesScreen extends StatefulWidget {
 class _EmployeesScreenState extends State<EmployeesScreen> {
   String newEmployeeName = '';
   List<String> employees = [];
+  List<String> foundEmployees = [];
 
   Future getDocIDEmployees() async {
     await FirebaseFirestore.instance.collection('users').get().then(
@@ -25,9 +26,7 @@ class _EmployeesScreenState extends State<EmployeesScreen> {
       },
     );
   }
-
-  List<String> foundEmployees = [];
-
+  
   void filterSearchEmployees(String searchTermEmployees) {
     List<String> searchResultEmployees = [];
     if (searchTermEmployees.isEmpty) {
